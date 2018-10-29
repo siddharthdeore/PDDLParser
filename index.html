@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=0.5, user-scalable=no" />
+
+<head>
+	<style type="text/css">
+	html, body {
+		margin: 0px;
+		background-color: #fafafa;
+		overflow-y: hidden;
+	}
+
+	canvas {
+		display: block;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+	}
+</style>
+<script src="domain.js"></script>
+<script type="text/javascript">
+	var d= new Domain("sid");
+	var a = new Action("move");
+
+	function TestSample() {
+		a.addParameters("?from");
+		a.addParameters("?to");
+		a.addParameters("?who");
+		a.addEffects("(and (lda a) (lasn b))");
+		a.addPrecondition("(and (lda a) (lasn b))");
+		d.AddAction(a);
+		d.ParsePDDL();
+		document.getElementById("domain_file").value = d.ParsePDDL(); 
+	}
+
+</script>
+</head>
+<body>
+<input type="button" onclick="TestSample();" name="Test">
+	<textarea id="domain_file" rows="20" cols="80"> </textarea>
+
+</body>
+</html>
